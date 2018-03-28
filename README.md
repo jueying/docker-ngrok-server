@@ -31,5 +31,6 @@ docker run -d -p 80:80 -p 8082:8082 -p 443:443 jueying/ngrok-server google.com 8
 从容器内获取ngrok客户端:
 
 ```
-docker cp container_id:/usr/local/ngrok/bin /tmp
+docker cp container_id:/usr/local/ngrok/bin/ /tmp/
+在/tmp/bin/中可以找到win64, win32和macos64对应的客户端
 ```
