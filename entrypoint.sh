@@ -23,10 +23,11 @@ if [ ! -f "build.info" ]; then
   \cp device.key assets/server/tls/snakeoil.key 
 
   make release-server
-  GOOS=windows GOARCH=amd64 make release-client  
+  GOOS=windows GOARCH=amd64 make release-client
+  GOOS=windows GOARCH=386 make release-client  
+  GOOS=darwin GOARCH=amd64 make release-client
 
   # save build info to file
-  rm -f build.info
   echo "$DOMAIN" >> build.info
   echo "$HTTP_PORT" >> build.info
   echo "$HTTPS_PORT" >> build.info
