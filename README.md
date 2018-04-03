@@ -32,13 +32,20 @@ docker run -d -p 80:80 -p 8082:8082 -p 443:443 jueying/ngrok-server google.com 8
 
 ```
 docker cp container_id:/usr/local/ngrok/bin/ /tmp/
-在/tmp/bin/中可以找到win64, win32和macos64对应的客户端
 ```
+**注：container_id换成启动的容器id**
+
+在/tmp/bin/中可以找到win64, win32和macos64对应的客户端
 
 --------
 ngrok配置使用:
 
 1. 将域名 泛解析 到docker所在主机ip
+```
+记录类型 主机记录 记录值(IP)
+A	*	139.1.1.1	
+A	@	139.1.1.1	
+```
 2. 从容器内拷贝出相应的ngrok客户端，然后在同级目录建立配置文件ngrok.cfg,内容如下：
 ```
 server_addr: "your_domain:tunnel_port"
@@ -49,4 +56,4 @@ windows平台通过以下命令启动:
 ```
 ngrok.exe -subdomain=test -config=ngrok.cfg local_port
 ```
-将local_port换成想要代理的本地端口，如80
+**注：local_port换成想要代理的本地端口，如80**
