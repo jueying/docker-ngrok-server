@@ -34,14 +34,10 @@ if [ ! -f "build.info" ]; then
   echo "$TUNNEL_PORT" >> build.info
 fi
 
-echo "step 2"
-
 # start ngrok server
 DOMAIN=$(sed -n "1p" build.info)
 HTTP_PORT=$(sed -n "2p" build.info)
 HTTPS_PORT=$(sed -n "3p" build.info)
 TUNNEL_PORT=$(sed -n "4p" build.info)
-echo $DOMAIN
-./bin/ngrokd -tlsKey=device.key -tlsCrt=device.crt -domain="$DOMAIN" -httpAddr=":$HTTP_PORT" -httpsAddr=":$HTTPS_PORT" -tunnelAddr=":$TUNNEL_PORT"
 
-echo "step 3"
+./bin/ngrokd -tlsKey=device.key -tlsCrt=device.crt -domain="$DOMAIN" -httpAddr=":$HTTP_PORT" -httpsAddr=":$HTTPS_PORT" -tunnelAddr=":$TUNNEL_PORT"
