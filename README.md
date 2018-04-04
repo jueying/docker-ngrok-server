@@ -1,7 +1,7 @@
 
 # docker image for ngrok server
 
- ngrok服务器的docker image
+ ngrok服务器的docker image，用来做内网穿透。
   
 ## 使用步骤：
 ----------------
@@ -49,7 +49,7 @@ windows平台通过以下命令启动:
 ```
 ngrok.exe -subdomain=子域名 -config=ngrok.cfg 本地端口
 ```
-可以从files文件夹中下载我的ngrok客户端配置，然后修改你的域名，并替换为你的ngrok客户端。
+可以在files文件夹中[下载](https://github.com/jueying/docker-ngrok-server/blob/master/files/ngrok-client.rar)我的ngrok客户端配置，然后修改你的域名，并替换为你的ngrok客户端。
 
 ---
 ## 注意事项
