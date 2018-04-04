@@ -1,7 +1,11 @@
 
 # docker image for ngrok server
+
+ ngrok服务器的docker image
+  
+## 使用步骤：
 ----------------
-### 获取这个镜像:
+### 1. 获取这个镜像:
 ```
 # 直接从docker仓库拉取镜像
 docker pull jueying/ngrok-server
@@ -10,8 +14,7 @@ docker pull jueying/ngrok-server
 docker build -t jueying/ngrok-server https://github.com/jueying/docker-ngrok-server.git
 ```
 
-
-### 在后台运行容器:
+### 2. 在后台运行容器:
 ```
 docker run -d --name ngrok-server -p 主机http端口:容器http端口 -p 主机https端口:容器https端口 -p 隧道port:隧道port jueying/ngrok-server 域名 容器http端口 主机https端口 隧道port
 
@@ -25,14 +28,13 @@ docker logs ngrok-server
 当出现以下日志时表示启动成功
 ![info](files/ngrokd_start.jpg)
 
-### 启动成功后从容器内获取ngrok客户端:
+### 3. 从容器内拷贝ngrok客户端:
 ```
 docker cp ngrok-server:/usr/local/ngrok/bin/ /tmp/
 ```
 在/tmp/bin/中可以找到win64, win32和macos64对应的客户端
 
---------
-### ngrok配置使用:
+### 4. ngrok配置使用:
 
 1. 将你的独立域名泛解析到docker所在主机ip
 ![info](files/domain.jpg)
@@ -49,5 +51,7 @@ ngrok.exe -subdomain=子域名 -config=ngrok.cfg 本地端口
 ```
 可以从files文件夹中下载我的ngrok客户端配置，然后修改你的域名，并替换为你的ngrok客户端。
 
-> ### 注意事项
+---
+## 注意事项
+---
 1. 每次启动一个新的容器时，会生成配套的ngrok服务端和客户端。所以如果重新启动一个新的容器，需要重新拷贝新的ngrok客户端出来。启动已有的容器不用更新ngrok客户端。
