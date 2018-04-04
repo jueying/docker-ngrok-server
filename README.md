@@ -2,6 +2,8 @@
 # docker image for ngrok server
 
  ngrok服务器的docker image，用来做内网穿透。
+ 
+ **可以直接下载附件中的ngrok客户端使用**
   
 ## 使用步骤：
 ----------------
